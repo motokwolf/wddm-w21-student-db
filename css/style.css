@@ -1,0 +1,8 @@
+.student {
+  background-color: #ddd;
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+.student data {
+  text-align: right;
+}
