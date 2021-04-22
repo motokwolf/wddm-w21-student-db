@@ -3,17 +3,20 @@ const studentsAr = [
     id: 234,
     name: { first: `Tim`, last: `Berners-Lee` },
     gpa: 3.8,
-    enrolled: [ `WDDM 113`, `WDDM 114` ]
+    enrolled: [ `WDDM 113`, `WDDM 114` ],
+    photo: `tim-berners-lee.jpg`
   }, {
     id: 256,
     name: { first: `Grace`, last: `Hopper` },
     gpa: 3.9,
-    enrolled: [ `WDDM 113`, `WDDM 114`, `WDDM 115` ]
+    enrolled: [ `WDDM 113`, `WDDM 114`, `WDDM 115` ],
+    photo: `grace-hopper.jpg`
   }, {
     id: 263,
     name: { first: `Alan`, last: `Turing` },
     gpa: 2.3,
-    enrolled: []
+    enrolled: [],
+    photo: `alan-turing.jpg`
   }
 ]
 
@@ -30,6 +33,7 @@ studentsAr.forEach((student) => {
   // Modify this new element, just like we would any other DOM element
   listItem.classList.add(`student`)
   listItem.innerHTML = `
+    <img src="img/${student.photo}" alt="${student.name.first}" class="photo">
     <b>${student.name.last}, ${student.name.first}</b>
     <data value="${student.gpa }">${ student.gpa } GPA</data>
   `
