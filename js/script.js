@@ -51,33 +51,45 @@ const setStudentToTable = function(theArray) {
 }
 
 
-setStudentToTable(studentsAr)
-
-
-
-
-
-
+// Select the range slider (filter)
 const filterGpa = document.querySelector(`#filterGpa`)
 
+// Every time the slide value changes...
 filterGpa.addEventListener(`input`, function(event) {
+
+  // The range slider
   const theRange = event.target
+
+  // The <output> for the range (so we can see what's happening)
   const theOutput = document.querySelector(`output[for="filterGpa"]`)
+  // put the range "value" in the output
+  theOutput.textContent = theRange.value  
 
-  theOutput.textContent = theRange.value
-
-
-  // filter() is a loop!!!
-  const filteredStudent = studentsAr.filter(function(student) {
+  // filter() is a loop that includes/excludes values from an array to build a new array
+  //    If the callback function returns true, the value is added to the new array
+  //    If the callback function returns false, the value is NOT added to the new array
+  const filteredStudents = studentsAr.filter(function(student) {
     if (student.gpa >= Number(theRange.value)) {
       return true
     } else {
       return false
     }
+
+    // Notice the above if/else can be simplified to just this...
     //return student.gpa > 3
-  
   })
 
-  setStudentToTable(filteredStudent)
+  // Go build the UI with the new filtered array
+  setStudentToTable(filteredStudents)
 
+
+  // Note: filteredStudents is a NEW array, not a copy of the original
+  //  - This is key, because we don't want to "mutate" our dataset, or we won't be able to see those students again if the filter changes
 })
+
+
+
+
+
+// When the UI loads, build the table with all students showing (studentsAr is the full set)
+setStudentToTable(studentsAr)
