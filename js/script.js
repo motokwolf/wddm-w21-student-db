@@ -40,5 +40,5 @@ studentsAr.forEach((student) => {
 
   // Add the new <li> element to the document
   studentTable.appendChild(listItem)
-
+  
 })
